@@ -1,0 +1,188 @@
+---
+argument_specs:
+  main:
+    short_description: Install and configure Smokeping prober for Prometheus
+    options:
+      smokeping_prober_extra_flags:
+        description: Extra flags to run exporter with
+        type: dict
+
+      smokeping_prober_privileged:
+        description: If true, run in privileged ICMP mode
+        type: bool
+        default: true
+
+      smokeping_prober_listen_addresses:
+        description: List of addresses and ports to listen on
+        type: list
+        elements: str
+        default: ["localhost:9374"]
+
+      smokeping_prober_log_level:
+        description: Only log messages with the given severity or above
+        type: str
+        default: warn
+        choices:
+          - debug
+          - info
+          - warn
+          - error
+
+      smokeping_prober_port:
+        description: Listen port
+        type: int
+        default: 9374
+
+      smokeping_prober_config_file:
+        description: Path for configuration file
+        type: str
+        default: /etc/prometheus/exporters/smokeping_prober/config.yml
+
+      smokeping_prober_targets:
+        description:
+          - List of prober configuration for smokeping prober to target
+          - Each item may be given as a string or dictionary
+          - |
+              See here for details about the target configuration format
+              https://github.com/SuperQ/smokeping_prober#configuration
+        type: list
+        elements: raw
+
+      smokeping_prober_file_sd_dir:
+        description: Directory, on scrape servers, for the file service discovery target
+        type: str
+        default: /etc/prometheus/file_sd/smokeping_prober
+
+      smokeping_prober_scrape_servers:
+        description: |
+          List of servers that scrape exporter metrics from the host,
+          overrides prometheus_scrape_servers
+        type: list
+        elements: str
+
+      smokeping_prober_labels:
+        description: |
+          Labels added to exporter metrics,
+          overrides prometheus_labels
+        type: dict
+
+      smokeping_prober_install:
+        description: If true, install exporter
+        type: bool
+        default: true
+
+      smokeping_prober_configure_caddy:
+        description: If true, configure caddy to add a TLS endpoint for the exporter
+        type: bool
+        default: false
+
+      smokeping_prober_register:
+        description: If true, register the exporter with the scrape servers
+        type: bool
+        default: false
+
+      smokeping_prober_user:
+        description: Name of the exporter unix user
+        type: str
+
+      smokeping_prober_group:
+        description: Name of the exporter unix group
+        type: str
+
+      smokeping_prober_groups:
+        description: Unix groups added to exporter unix user
+        type: list
+        elements: str
+
+      smokeping_prober_manage_user:
+        description: If true, add exporter unix user and group
+        type: bool
+        default: true
+
+      smokeping_prober_bin_dir:
+        description: Directory for the exporter executable
+        type: str
+
+      smokeping_prober_src_dir:
+        description: Directory for the downloaded exporter src archive
+        type: str
+
+      smokeping_prober_strip_components:
+        description: Strip NUMBER leading components from file names on extraction
+        type: int
+        default: 1
+
+      smokeping_prober_clean_src_dir:
+        description: Remove old downloaded archive files from exporter src directory
+        type: bool
+        default: true
+
+      smokeping_prober_github_org:
+        description: Name of organisation for exporter github repository
+        type: str
+        default: SuperQ
+
+      smokeping_prober_github_repo:
+        description: Name of exporter github repository
+        type: str
+
+      smokeping_prober_github_checksum_filename:
+        description: Filename for the exporter package checksums file on github
+        type: str
+
+      smokeping_prober_archive_urls:
+        description: |
+          Override the list of exporter archive urls for different platforms and architectures
+        type: list
+        elements: str
+
+      smokeping_prober_version:
+        description: Version to install (use "latest" for the latest version)
+        type: str
+        default: latest
+
+      smokeping_prober_arch_map:
+        description: |
+          Mapping of the possible values of ansible_architecture
+          to the exporter package architectures
+        type: dict
+
+      smokeping_prober_binary:
+        description: Filename for the exporter executable
+        type: str
+
+      smokeping_prober_checksum_url:
+        description: Override the URL for the exporter checksum file
+        type: str
+
+      smokeping_prober_checksum_type:
+        description: The exporter package checksum type
+        type: str
+
+      smokeping_prober_checksums:
+        description: Override exporter archive checksums file contents
+        type: str
+
+      smokeping_prober_service:
+        description: Name of the exporter systemd service
+        type: str
+
+      smokeping_prober_service_unit_file:
+        description: Contents of the systemd unit file for the exporter
+        type: str
+
+      smokeping_prober_handler:
+        description: Name of the exporter handler to notify
+        type: str
+
+      smokeping_prober_description:
+        description: Description for the exporter systemd service
+        type: str
+
+      smokeping_prober_flags:
+        description: List of flags to run exporter with, as string or list
+        type: raw
+
+      smokeping_prober_target:
+        description: Scrape target hostname and port
+        type: str
