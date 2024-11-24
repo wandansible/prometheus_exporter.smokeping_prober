@@ -1,0 +1,23 @@
+---
+- name: Apply base prometheus exporter role
+  ansible.builtin.import_role:
+    name: wandansible.prometheus_exporter
+
+- block:
+    - name: Create smokeping_prober configuration directory
+      ansible.builtin.file:
+        state: directory
+        path: "{{ smokeping_prober_config_file | dirname }}"
+        owner: root
+        group: root
+        mode: u=rwx,g=rx,o=rx
+
+    - name: Add smokeping_prober configuration
+      ansible.builtin.template:
+        src: config.yml
+        dest: "{{ smokeping_prober_config_file }}"
+        owner: root
+        group: root
+        mode: u=rw,g=r,o=r
+      notify: restart {{ exporter_service }}
+  when: exporter_install | bool

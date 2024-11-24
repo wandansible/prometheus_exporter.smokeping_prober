@@ -1,0 +1,12 @@
+---
+smokeping_prober_github_org: SuperQ
+smokeping_prober_port: 9374
+smokeping_prober_listen_addresses:
+  - "localhost:{{ smokeping_prober_port }}"
+smokeping_prober_service_unit_file: "{{ lookup('template', 'service') }}"
+smokeping_prober_flags: "{{ lookup('template', 'flags') }}"
+smokeping_prober_extra_flags: {}
+smokeping_prober_privileged: true
+smokeping_prober_log_level: warn
+smokeping_prober_config_file: /etc/prometheus/exporters/smokeping_prober/config.yml
+smokeping_prober_targets: []

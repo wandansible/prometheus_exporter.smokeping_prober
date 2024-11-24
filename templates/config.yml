@@ -1,0 +1,9 @@
+---
+# {{ ansible_managed }}
+
+targets:
+{% if smokeping_prober_targets is string %}
+  {{ smokeping_prober_targets | indent(2) | trim }}
+{% elif smokeping_prober_targets is mapping %}
+  {{ smokeping_prober_targets | to_nice_yaml(indent=2, sort_keys=false) | indent(2) | trim }}
+{% endif %}

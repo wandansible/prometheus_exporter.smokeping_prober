@@ -1,0 +1,16 @@
+#jinja2: trim_blocks: "false", lstrip_blocks: "true"
+{% for k, v in smokeping_prober_extra_flags | dictsort %}
+  {% if v == "" %}
+--{{ k }}
+  {% else %}
+--{{ k }}="{{ v }}"
+  {% endif %}
+{% endfor %}
+{% if smokeping_prober_privileged | bool %}
+--privileged
+{% endif %}
+--config.file="{{ smokeping_prober_config_file }}"
+--log.level="{{ smokeping_prober_log_level }}"
+{% for smokeping_prober_listen_address in smokeping_prober_listen_addresses %}
+--web.listen-address="{{ smokeping_prober_listen_address }}"
+{% endfor %}

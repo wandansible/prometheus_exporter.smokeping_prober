@@ -1,0 +1,50 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description={{ exporter_description }}
+
+ConditionFileIsExecutable={{ exporter_bin_dir }}/{{ exporter_binary }}
+
+StartLimitIntervalSec=0
+
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User={{ exporter_user }}
+Group={{ exporter_group }}
+EnvironmentFile=-/etc/default/{{ exporter_service }}
+ExecStart={{ exporter_bin_dir }}/{{ exporter_binary }} \
+          $EXPORTER_ARGS
+ExecReload=/bin/kill -HUP ${MAINPID}
+
+Restart=on-failure
+RestartSec=10s
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+SyslogIdentifier={{ exporter_service }}
+
+AmbientCapabilities=CAP_NET_RAW
+CapabilityBoundingSet=CAP_NET_RAW
+DeviceAllow=/dev/null rw
+DevicePolicy=strict
+LimitMEMLOCK=0
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=full
+RemoveIPC=true
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
