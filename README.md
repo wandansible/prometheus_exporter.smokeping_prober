@@ -16,12 +16,14 @@ ENTRY POINT: *main* - Install and configure Smokeping prober for Prometheus
 
 Options (= indicates it is required):
 
-- smokeping_prober_arch_map  Mapping of the possible values of ansible_architecture to the
-                              exporter package architectures
+- smokeping_prober_arch_map  Mapping of the possible values of
+                              ansible_architecture to the exporter
+                              package architectures
           default: null
           type: dict
 
-- smokeping_prober_archive_urls  Override the list of exporter archive urls for different platforms
+- smokeping_prober_archive_urls  Override the list of exporter
+                                  archive urls for different platforms
                                   and architectures
           default: null
           elements: str
@@ -39,15 +41,18 @@ Options (= indicates it is required):
           default: null
           type: str
 
-- smokeping_prober_checksum_url  Override the URL for the exporter checksum file
+- smokeping_prober_checksum_url  Override the URL for the exporter
+                                  checksum file
           default: null
           type: str
 
-- smokeping_prober_checksums  Override exporter archive checksums file contents
+- smokeping_prober_checksums  Override exporter archive checksums
+                               file contents
           default: null
           type: str
 
-- smokeping_prober_clean_src_dir  Remove old downloaded archive files from exporter src directory
+- smokeping_prober_clean_src_dir  Remove old downloaded archive files
+                                   from exporter src directory
           default: true
           type: bool
 
@@ -55,11 +60,13 @@ Options (= indicates it is required):
           default: /etc/prometheus/exporters/smokeping_prober/config.yml
           type: str
 
-- smokeping_prober_configure_caddy  If true, configure caddy to add a TLS endpoint for the exporter
+- smokeping_prober_configure_caddy  If true, configure caddy to add a
+                                     TLS endpoint for the exporter
           default: false
           type: bool
 
-- smokeping_prober_description  Description for the exporter systemd service
+- smokeping_prober_description  Description for the exporter systemd
+                                 service
           default: null
           type: str
 
@@ -67,19 +74,24 @@ Options (= indicates it is required):
           default: null
           type: dict
 
-- smokeping_prober_file_sd_dir  Directory, on scrape servers, for the file service discovery target
+- smokeping_prober_file_sd_dir  Directory, on scrape servers, for the
+                                 file service discovery target
           default: /etc/prometheus/file_sd/smokeping_prober
           type: str
 
-- smokeping_prober_flags  List of flags to run exporter with, as string or list
+- smokeping_prober_flags  List of flags to run exporter with, as
+                           string or list
           default: null
           type: raw
 
-- smokeping_prober_github_checksum_filename  Filename for the exporter package checksums file on github
+- smokeping_prober_github_checksum_filename  Filename for the
+                                              exporter package
+                                              checksums file on github
           default: null
           type: str
 
-- smokeping_prober_github_org  Name of organisation for exporter github repository
+- smokeping_prober_github_org  Name of organisation for exporter
+                                github repository
           default: SuperQ
           type: str
 
@@ -104,21 +116,25 @@ Options (= indicates it is required):
           default: true
           type: bool
 
-- smokeping_prober_labels  Labels added to exporter metrics, overrides prometheus_labels
+- smokeping_prober_labels  Labels added to exporter metrics,
+                            overrides prometheus_labels
           default: null
           type: dict
 
-- smokeping_prober_listen_addresses  List of addresses and ports to listen on
+- smokeping_prober_listen_addresses  List of addresses and ports to
+                                      listen on
           default: ['localhost:9374']
           elements: str
           type: list
 
-- smokeping_prober_log_level  Only log messages with the given severity or above
+- smokeping_prober_log_level  Only log messages with the given
+                               severity or above
           choices: [debug, info, warn, error]
           default: warn
           type: str
 
-- smokeping_prober_manage_user  If true, add exporter unix user and group
+- smokeping_prober_manage_user  If true, add exporter unix user and
+                                 group
           default: true
           type: bool
 
@@ -130,11 +146,13 @@ Options (= indicates it is required):
           default: true
           type: bool
 
-- smokeping_prober_register  If true, register the exporter with the scrape servers
+- smokeping_prober_register  If true, register the exporter with the
+                              scrape servers
           default: false
           type: bool
 
-- smokeping_prober_scrape_servers  List of servers that scrape exporter metrics from the host,
+- smokeping_prober_scrape_servers  List of servers that scrape
+                                    exporter metrics from the host,
                                     overrides
                                     prometheus_scrape_servers
           default: null
@@ -145,15 +163,18 @@ Options (= indicates it is required):
           default: null
           type: str
 
-- smokeping_prober_service_unit_file  Contents of the systemd unit file for the exporter
+- smokeping_prober_service_unit_file  Contents of the systemd unit
+                                       file for the exporter
           default: null
           type: str
 
-- smokeping_prober_src_dir  Directory for the downloaded exporter src archive
+- smokeping_prober_src_dir  Directory for the downloaded exporter src
+                             archive
           default: null
           type: str
 
-- smokeping_prober_strip_components  Strip NUMBER leading components from file names on extraction
+- smokeping_prober_strip_components  Strip NUMBER leading components
+                                      from file names on extraction
           default: 1
           type: int
 
@@ -161,7 +182,8 @@ Options (= indicates it is required):
           default: null
           type: str
 
-- smokeping_prober_targets  List of prober configuration for smokeping prober to target
+- smokeping_prober_targets  List of prober configuration for
+                             smokeping prober to target
                              Each item may be given as a string or
                              dictionary
                              See here for details about the target
@@ -175,7 +197,8 @@ Options (= indicates it is required):
           default: null
           type: str
 
-- smokeping_prober_version  Version to install (use "latest" for the latest version)
+- smokeping_prober_version  Version to install (use "latest" for the
+                             latest version)
           default: latest
           type: str
 ```
