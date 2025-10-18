@@ -5,3 +5,5 @@
     - name: "Include wandansible.prometheus_exporter.smokeping_prober"
       ansible.builtin.include_role:
         name: "wandansible.prometheus_exporter.smokeping_prober"
+      vars:
+        smokeping_prober_github_token: "{{ lookup('env', 'GITHUB_TOKEN') }}"
