@@ -148,7 +148,7 @@ argument_specs:
 
       smokeping_prober_arch_map:
         description: |
-          Mapping of the possible values of ansible_architecture
+          Mapping of the possible values of ansible_facts.architecture
           to the exporter package architectures
         type: dict
 

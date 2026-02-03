@@ -17,8 +17,8 @@ ENTRY POINT: *main* - Install and configure Smokeping prober for Prometheus
 Options (= indicates it is required):
 
 - smokeping_prober_arch_map  Mapping of the possible values of
-                              ansible_architecture to the exporter
-                              package architectures
+                              ansible_facts.architecture to the
+                              exporter package architectures
           default: null
           type: dict
 
