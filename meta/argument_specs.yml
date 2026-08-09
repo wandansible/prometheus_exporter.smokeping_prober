@@ -131,7 +131,7 @@ argument_specs:
         type: str
         default: ""
 
-      smokeping_prober_github_checksum_filename:
+      smokeping_prober_checksum_filename:
         description: Filename for the exporter package checksums file on github
         type: str
 
